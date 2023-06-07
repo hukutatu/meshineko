@@ -1,0 +1,2 @@
+module Pubilc::RecipeCommentsHelper
+end
