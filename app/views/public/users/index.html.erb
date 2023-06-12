@@ -1,1 +1,8 @@
-<h1>テスト</h1>
+    <% @dishes.each do |dish| %>
+     <div><%= link_to dish.dish_name, "https://www.google.com/search?q=#{dish.dish_name}", target: "_blank", rel: "noopener" %></div>
+    <% end %>
+    <div>
+      <%= link_to "投稿フォーム", new_public_recipe_path %>
+    </div>
+    <div><%= image_tag'line-art-5073_256.gif', size: "200x200" %></div>
+

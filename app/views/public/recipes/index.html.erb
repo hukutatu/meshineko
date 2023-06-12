@@ -1,0 +1,22 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td>
+          <%= link_to(public_user_path(recipe.user.id)) do %>
+            <%=image_tag recipe.user.get_image(100,100), size:'100x100' %>
+          <% end %>
+        </td>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.capion %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

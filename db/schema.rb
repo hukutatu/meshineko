@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_06_091903) do
+ActiveRecord::Schema.define(version: 2023_06_10_073004) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 2023_06_06_091903) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "dishes", force: :cascade do |t|
+    t.string "dish_name", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -68,6 +74,9 @@ ActiveRecord::Schema.define(version: 2023_06_06_091903) do
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "capion", default: "", null: false
+    t.string "title", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

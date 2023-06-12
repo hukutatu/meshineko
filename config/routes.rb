@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -11,9 +11,9 @@ devise_for :user, skip: [:passwords], controllers: {
   get 'homes/top'
   root to: 'homes#top'
   get "home/about"=>"homes#about"
-  
+
   namespace :public do
-    resources :recipes, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resources :recipes, only: [:index,:show,:new,:create,:destroy,] do
       resources :recipe_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
@@ -23,5 +23,5 @@ devise_for :user, skip: [:passwords], controllers: {
   	  get 'followers' => 'follows#followers', as: 'followers'
     end
   end
- 
+
 end

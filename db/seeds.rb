@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+p '==================== dish create ===================='
+dish_names = ["鮭飯","中華ちまき","リゾット","五目炊き込みご飯（釜飯）","栗ご飯","きのこご飯","タケノコご飯","山菜おこわ","あさりご飯"
+  ]
+dish_names.each do |dish_name|
+  Dish.create(
+    dish_name:dish_name
+  )
+end
