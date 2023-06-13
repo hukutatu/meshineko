@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2023_06_10_073004) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,6 +71,9 @@ ActiveRecord::Schema.define(version: 2023_06_10_073004) do
   end
 
   create_table "recipe_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
+    t.string "opinion", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

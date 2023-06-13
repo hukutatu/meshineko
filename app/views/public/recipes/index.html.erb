@@ -4,6 +4,7 @@
       <th>画像</th>
       <th>タイトル</th>
       <th>説明</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,9 @@
         </td>
         <td><%= recipe.title %></td>
         <td><%= recipe.capion %></td>
+        <td class=<%= "favorite-" + recipe.id.to_s %> >
+          <%= render "public/favorites/btn", recipe: recipe %>
+        </td>
       </tr>
     <% end %>
   </tbody>
