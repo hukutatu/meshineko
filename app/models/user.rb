@@ -21,6 +21,18 @@ class User < ApplicationRecord
 
      image.variant(resize_to_limit: [width, height]).processed
  end
+ 
+  def follow(user)
+    follow.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    follow.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
    
    
 end

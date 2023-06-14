@@ -17,12 +17,13 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_comment = RecipeComment.new
   end
   
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-   redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
 

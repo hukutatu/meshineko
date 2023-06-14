@@ -1,7 +1,25 @@
-      <td>
-        <%= link_to(public_recipe_path(@recipe.id)) do %>
-          <%=image_tag @recipe.user.get_image(100,100), size:'100x100' %>
-        <% end %>
-      </td>
-      <td><%= @recipe.title %></td>
-      <td><%= @recipe.capion %></td>
+  <div class='container'>
+    <div class='row'>
+      <table class='table'>
+        <tr>
+          <td>
+            <%= link_to(public_recipe_path(@recipe.id)) do %>
+              <%=image_tag @recipe.user.get_image(100,100), size:'100x100' %>
+            <% end %>
+          </td>
+          <td><%= @recipe.title %></td>
+          <td><%= @recipe.capion %></td>
+          <td class=<%= "favorite-" + @recipe.id.to_s %> >
+            <%= render "public/favorites/btn", recipe: @recipe %>
+          </td>
+          <td class="recipe-comments-counter">
+            <%= render "public/recipe_comments/counter", recipe: @recipe %>
+          </td>
+        </tr>
+      </table>
+      <div class="recipe-comments-index">
+        <%= render "public/recipe_comments/index", recipe: @recipe %>
+      </div>
+      <%= render "public/recipe_comments/form", recipe: @recipe %>
+  </div>
+</div>

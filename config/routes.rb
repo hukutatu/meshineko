@@ -13,10 +13,10 @@ devise_for :user, skip: [:passwords], controllers: {
   get "home/about"=>"homes#about"
 
   namespace :public do
-    resources :recipes, only: [:index,:show,:new,:create,:destroy,] do
-      resources :recipe_comments, only: [:create, :destroy]
+    resources :recipes, only: [:index,:show,:new,:create,:destroy,:edit] do
       resource :favorites, only: [:create, :destroy]
     end
+    resources :recipe_comments, only: [:create, :destroy]
     resources :users, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
     	get 'followings' => 'follows#followings', as: 'followings'

@@ -9,11 +9,15 @@
         </tr>
       </table>
         <div>
-          <%= link_to edit_public_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
+          <% if current_user != @user %>
+            <td><%= render "public/follows/btn", user: user %></td>
+          <% else %>
+            <%= link_to edit_public_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
             <i class="fas fa-user-cog"></i>
+            <% end %>
           <% end %>
         </div>
-    </div>  
+    </div>
     <div class='col-md-8 offset-md-1'>
       <table class='table table-hover table-inverse'>
         <thead>
@@ -37,10 +41,13 @@
               <% if recipe.user == current_user %>
                 <td><%= link_to 'Destroy', public_recipe_path(recipe), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{recipe.id}" %></td>
               <% end %>
+              <td class="recipe-comments-counter">
+                <%= render "public/recipe_comments/counter", recipe: @user %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-</div> 
+</div>
