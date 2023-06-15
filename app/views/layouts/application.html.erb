@@ -8,10 +8,17 @@
     <script src="https://kit.fontawesome.com/9a86b60576.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <%= render 'layouts/header' %>
 
   <body>
-    <%= yield %>
+     <main>
+        <p id="notice"><%= notice %></p>
+        <div class="d-flex justify-content-center mb-2">
+          <%= render 'public/searches/form' %>
+        </div>
+        <%= yield %>
+      </main>
   </body>
 </html>

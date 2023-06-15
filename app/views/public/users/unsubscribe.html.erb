@@ -1,0 +1,28 @@
+<div class="container">
+
+    <div class="row">
+      <div class="col-12 text-center mt-5">
+        <h3 class="mt-5 mb-5">本当に退会するにゃ？</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center mb-3">
+        <p>
+         退会すると今までの履歴が全部なくなるにゃ<br>
+         それでもいいかにゃ？
+        </p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-2 ml-5">
+        <%= link_to "退会しないにゃ", :back, class: "btn btn-secondary" %>
+      </div>
+
+      <div class="col-2 col-offset-1">
+        <%= link_to "退会するにゃ",public_user_withdrawal_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+      </div>
+    </div>
+
+</div>

@@ -8,7 +8,7 @@ devise_for :user, skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
-  get 'homes/top'
+
   root to: 'homes#top'
   get "home/about"=>"homes#about"
 
@@ -18,10 +18,13 @@ devise_for :user, skip: [:passwords], controllers: {
     end
     resources :recipe_comments, only: [:create, :destroy]
     resources :users, only: [:index,:show,:edit,:update] do
-      resource :relationships, only: [:create, :destroy]
-    	get 'followings' => 'follows#followings', as: 'followings'
-  	  get 'followers' => 'follows#followers', as: 'followers'
+      get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+      patch 'users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+      resource :follows, only: [:create, :destroy]
+  	get 'followings' => 'follows#followings', as: 'followings'
+	  get 'followers' => 'follows#followers', as: 'followers'
     end
+    get '/search', to: 'searches#search'
   end
 
 end

@@ -1,8 +1,28 @@
-    <% @dishes.each do |dish| %>
-     <div><%= link_to dish.dish_name, "https://www.google.com/search?q=#{dish.dish_name}", target: "_blank", rel: "noopener" %></div>
-    <% end %>
-    <div>
+<div class="container-fluid py-5">
+  <div class="row">
+  <div class="col-md-4 text-center text-md-right order-0 order-md-0">
+    <div class="mt-0 mt-md-5">
+      <span class="p-1 p-md-3 top-circle">
+        <%= link_to @dishes[0].dish_name, "https://www.google.com/search?q=#{@dishes[0].dish_name}", target: "_blank", rel: "noopener" %>
+      </span>
+    </div>
+  </div>
+  <div class="col-md-4 text-center order-2 order-md-1 mt-3 mt-md-0">
+    <span class="p-1 p-md-3 top-circle">
+      <%= link_to @dishes[1].dish_name, "https://www.google.com/search?q=#{@dishes[1].dish_name}", target: "_blank", rel: "noopener" %>
+    </span>
+    <%= image_tag 'line-art-5073_256.gif', size: "200x200", class: 'mt-5 d-block mx-auto rounded-circle' %>
+    <div class="text-center my-4">
       <%= link_to "投稿フォーム", new_public_recipe_path %>
     </div>
-    <div><%= image_tag'line-art-5073_256.gif', size: "200x200" %></div>
 
+  </div>
+  <div class="col-md-4 text-center text-md-left order-1 order-md-2 mt-3 mt-md-0">
+    <div class="mt-0 mt-md-5">
+      <span class="p-1 p-md-3 top-circle">
+        <%= link_to @dishes[2].dish_name, "https://www.google.com/search?q=#{@dishes[2].dish_name}", target: "_blank", rel: "noopener" %>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
