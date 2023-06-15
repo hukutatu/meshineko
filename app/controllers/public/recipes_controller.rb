@@ -19,7 +19,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
   end
-  
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
