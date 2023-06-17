@@ -20,5 +20,19 @@
         </div>
         <%= yield %>
       </main>
+      <footer>
+        <div class="container mt-5" >
+          <div class="row">
+            <div class="mx-auto">
+              <% if admin_signed_in? %>
+                <%= link_to "staff only", admin_users_path, class: "btn btn-outline-secondary btn-sm" %>
+              <% else %>
+                <%= link_to "staff only", admin_session_path, class: "btn btn-outline-secondary btn-sm" %>
+              <% end %>
+              <p>nyannyan社</p>
+            </div>
+          </div>
+        </div>
+      </footer>
   </body>
 </html>

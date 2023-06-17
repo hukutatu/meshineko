@@ -1,0 +1,44 @@
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-11 col-lg-10 px-5 px-sm-0 mx-auto">
+  <div class='row py-4'>
+    <h3 class="ml-5"><%= @user.name %>さんの詳細</h3>
+  </div>
+  <div class="tr-color p-2">
+     <%= form_with model: [:admin,@user] do |f| %>
+     <div class="form-group">
+       <table class="table table-borderless">
+       <tbody>
+            <tr>
+              <th>ID</th>
+              <th><%= @user.id %></th>
+            </tr>
+            <tr>
+              <th>氏名</th>
+              <th><%= f.text_field :name, autofocus: true, id:"inputname" %></th>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <th><%= f.text_field :email, autofocus: true, id:"inputname" %></th>
+            </tr>
+            <tr>
+              <th><%= f.label :is_deleted,"ユーザーステータス" %></th>
+              <th>
+                <%= f.radio_button :is_deleted, :false, checked: true %>
+                <%= f.label :is_deleted, "有効", value: false %>
+                <%= f.radio_button :is_deleted, :true %>
+                <%= f.label :is_deleted, "退会", value: true %>
+              </th>
+            </tr>
+            <tr>
+              <th> <%= f.submit "変更を保存" %></th>
+            </tr>
+       </tbody>
+       </table>
+     </div>
+     <% end %>
+  </div>
+
+</div>
+</div>
+</div>

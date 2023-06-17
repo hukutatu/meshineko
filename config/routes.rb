@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
 
-devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
-devise_for :user, skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-
+  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+  devise_for :user, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
   root to: 'homes#top'
   get "home/about"=>"homes#about"
+
+  namespace :admin do
+   resources :users, only: [:index, :show, :edit, :update]
+   root to: 'homes#top'
+  end
 
   namespace :public do
     resources :recipes, only: [:index,:show,:new,:create,:destroy,:edit] do

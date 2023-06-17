@@ -6,3 +6,11 @@ dish_names.each do |dish_name|
     dish_name:dish_name
   )
 end
+
+p '==================== admin create ===================='
+3.times do |n|
+  Admin.create!(
+    email: "admin#{n+1}@nyan.com",
+    password: "123456"
+  )
+end
