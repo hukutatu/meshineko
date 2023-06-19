@@ -13,6 +13,12 @@ class User < ApplicationRecord
   has_many :follows, class_name: "Follow", foreign_key: "follow_id", dependent: :destroy
   has_many :followings, through: :follows, source: :followed
 
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
  def get_image(width,height)
   unless image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -33,7 +39,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(name: content)
