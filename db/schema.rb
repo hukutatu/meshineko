@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2023_06_10_073004) do
 
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
-    t.text "capion", default: "", null: false
+    t.text "capion", null: false
     t.string "title", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
