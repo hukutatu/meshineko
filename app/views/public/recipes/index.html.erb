@@ -12,7 +12,7 @@
       <tr>
         <td>
           <%= link_to (public_user_path(recipe.user.id)) do %>
-           <% if image.attached? %>
+           <% if recipe.image.attached? %>
              <%=image_tag recipe.image size:'100x100' %>
            <% end %>
           <% end %>
