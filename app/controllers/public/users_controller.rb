@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
-
+  
+  
   def index
    @dishes = Dish.all.sample(3)
   end
@@ -28,14 +29,18 @@ class Public::UsersController < ApplicationController
     reset_session
     redirect_to root_path, notice: "今まで利用してくれてありがとうにゃ〜"
   end
-
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name,:email,:image)
+ 
+  def likes
+    likes = Like.where(user_id: @user.id).pluck(:recipe_id)
+    @like_recipes = Recipe.find(likes)
   end
 
+  private
+ 
+  def user_params
+    params.require(:user).permit(:name,:email,:image)
+  end 
+  
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user

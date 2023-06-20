@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
@@ -29,11 +29,11 @@ Rails.application.routes.draw do
       get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
       patch 'users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
       resource :follows, only: [:create, :destroy]
-  	get 'followings' => 'follows#followings', as: 'followings'
-	  get 'followers' => 'follows#followers', as: 'followers'
+    	get 'followings' => 'follows#followings', as: 'followings'
+  	  get 'followers' => 'follows#followers', as: 'followers'
+	    get 'recipes' => 'recipes#favorite_recipes', as: 'favorite_recipes'
     end
     get '/search', to: 'searches#search'
   end
-
 
 end

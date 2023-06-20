@@ -25,6 +25,11 @@ class Public::RecipesController < ApplicationController
     @recipe.destroy
     redirect_back(fallback_location: root_path)
   end
+  
+  def favorite_recipes
+    recipe_ids = Favorite.where(user_id: params[:user_id]).pluck(:recipe_id)
+    @favorite_recipes = Recipe.where(id: recipe_ids)
+  end
 
 
   private

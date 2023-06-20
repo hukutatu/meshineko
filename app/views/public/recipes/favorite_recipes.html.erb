@@ -8,13 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @recipes.each do |recipe| %>
+   <% @favorite_recipes.each do |recipe| %>
       <tr>
         <td>
+          <% pp recipe, recipe.user %>
           <%= link_to (public_user_path(recipe.user.id)) do %>
-           <% if image.attached? %>
-             <%=image_tag recipe.image size:'100x100' %>
-           <% end %>
+            <%=image_tag recipe.user.get_image(100,100), size:'100x100' %>
           <% end %>
         </td>
         <td><%= recipe.title %></td>

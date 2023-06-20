@@ -4,15 +4,15 @@
       <table class='table'>
         <tr><%= image_tag @user.get_image(100,100), size:'100x100' %></tr>
         <tr>
-      	  <th>name</th>
+      	  <th>名前</th>
       	  <th><%= @user.name %></th>
         </tr>
         <tr>
-          <th>follows</th>
+          <th>フォロー</th>
           <th><%= link_to @user.followings.count, public_user_followings_path(@user) %></th>
         </tr>
         <tr>
-          <th>followers</th>
+          <th>フォロワー</th>
           <th><%= link_to @user.followers.count, public_user_followers_path(@user) %></th>
         </tr>
       </table>
@@ -23,6 +23,9 @@
             <%= link_to edit_public_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
             <i class="fas fa-user-cog"></i>
             <% end %>
+            <%= link_to public_user_favorite_recipes_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+            <i class="fa-solid fa-heart"></i>いいね一覧
+            <% end %>
           <% end %>
         </div>
     </div>
@@ -30,9 +33,9 @@
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th>画像</th>
-            <th>タイトル</th>
-            <th>説明</th>
+            <th>画像だにゃ</th>
+            <th>料理名だにゃ</th>
+            <th>説明するにゃ</th>
             <th></th>
           </tr>
         </thead>
