@@ -44,7 +44,9 @@
             <tr>
               <td>
                 <%= link_to(public_recipe_path(recipe.id)) do %>
-                  <%=image_tag recipe.user.get_image(100,100), size:'100x100' %>
+                  <% if recipe.image.attached? %>
+                    <%=image_tag recipe.image, size:'100x100' %>
+                  <% end %>
                 <% end %>
               </td>
               <td><%= recipe.title %></td>
