@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="/"><%=link_to image_tag(asset_path("猫.jpg"), class: 'mx-auto rounded-circle'), "/" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +25,17 @@
           </li>
           <li>
             <%= link_to  destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-out-alt"></i> logout
+            <% end %>
+          </li>
+          <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to  admin_users_path,class: 'nav-link text-light' do %>
+             <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to  destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
             <i class="fas fa-sign-out-alt"></i> logout
             <% end %>
           </li>

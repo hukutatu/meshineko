@@ -21,14 +21,16 @@
         <%= yield %>
       </main>
       <footer>
-        <div class="container mt-5" >
+        <div class="container" >
           <div class="row">
             <div class="mx-auto">
-              <% if admin_signed_in? %>
-                <%= link_to "staff only", admin_users_path, class: "btn btn-outline-secondary btn-sm" %>
-              <% else %>
-                <%= link_to "staff only", admin_session_path, class: "btn btn-outline-secondary btn-sm" %>
+              <% unless user_signed_in? || admin_signed_in? %>
+              <%= link_to "staff only", admin_users_path, class: "btn btn-outline-secondary btn-sm" %>
               <% end %>
+            </div>
+        　</div>
+          <div class="row">
+            <div class="mx-auto">
               <p>nyannyan社</p>
             </div>
           </div>
