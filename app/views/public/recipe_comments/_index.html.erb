@@ -10,6 +10,7 @@
           <% end %>
         </td>
         <td><%= recipe_comment.opinion %></td>
+        <td class="sentiment-score">コメント評価<%= recipe_comment.score %></td>
         <td>
           <% if recipe_comment.user == current_user %>
             <%= link_to "Destroy",  public_recipe_comment_path(recipe_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>

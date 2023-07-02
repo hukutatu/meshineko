@@ -4,6 +4,7 @@ class Public::RecipeCommentsController < ApplicationController
   def create
     recipe = Recipe.find(params[:recipe_id])
     @comment = current_user.recipe_comments.new(recipe_comment_params)
+    @comment.score = Language.get_data(recipe_comment_params[:opinion]) 
     @comment.recipe_id = recipe.id
     @comment.save
   end
