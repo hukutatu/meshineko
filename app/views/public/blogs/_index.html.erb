@@ -1,0 +1,52 @@
+<div class="schedule">食べたものを記録するにゃ</div>
+<table class="table">
+  <!--<thead class="thead-light">-->
+  <!--  <tr>-->
+  <!--    <th>料理名</th>-->
+  <!--    <th>日程</th>-->
+  <!--  </tr>-->
+  <!--</thead>-->
+
+  <tbody>
+    <%# blogs.each do |blog| %>
+      <tr>
+        <td><%#= link_to blog.title , [:public, blog] %></td>
+        <td><%#= blog.start_time.strftime("%m-%d") %></td>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>
+
+<% if @user == current_user %>
+  <%= form_with(model: [:public, blog], local: true) do |form| %>
+  
+    <div class="title">
+      <div class="form-tag">タイトル</div>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div class="content">
+      <div class="form-tag">内容</div>
+      <%= form.text_field :content %>
+    </div>
+  
+    <div class="time">
+      <div class="form-tag">時間</div>
+      <%= form.datetime_select :start_time %>
+    </div>
+  
+    <div class="submit">
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= month_calendar events: blogs do |date, blogs| %>
+  <%= date.day %>
+
+  <% blogs.each do |blog| %>
+    <div>
+      <%= link_to blog.title, [:public, blog] %>
+    </div>
+  <% end %>
+<% end %>

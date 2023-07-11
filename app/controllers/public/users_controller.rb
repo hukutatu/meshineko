@@ -9,6 +9,8 @@ class Public::UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
+     @blogs = @user.blogs
+     @blog = Blog.new
   end
 
   def edit

@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :follows, class_name: "Follow", foreign_key: "follow_id", dependent: :destroy
   has_many :followings, through: :follows, source: :followed
+  
+  has_many :blogs
 
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|

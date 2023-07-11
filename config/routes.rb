@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'blogs/index'
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
 	    get 'recipes' => 'recipes#favorite_recipes', as: 'favorite_recipes'
     end
     get '/search', to: 'searches#search'
+    resources :blogs, only: [:create, :show, :edit, :update, :destroy]
   end
 
 end
