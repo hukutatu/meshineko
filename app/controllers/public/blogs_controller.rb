@@ -36,15 +36,15 @@ class Public::BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    if @blog.update(blog_parameter)
-      redirect_to blogs_path, notice: "編集しました"
+    if @blog.update(blog_params)
+      redirect_to public_blog_path(@blog)
     else
       render 'edit'
     end
   end
-  
+
   private
-  
+
   def blog_params
     params.require(:blog).permit(:title, :content, :start_time)
   end
